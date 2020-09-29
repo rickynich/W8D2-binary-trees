@@ -10,7 +10,6 @@ class BST {
     constructor() {
         this.root = null;
     }
-
     insert(val, current = this.root) { //need pointer to trace location from the tree
         //default = if nothing is passed in for current, then this.root is passed for c
         let newNode = new TreeNode(val)
@@ -37,18 +36,29 @@ class BST {
     }
     searchRecur(val, current = this.root) {
         if (!current) return false
-        console.log('val ', val, 'current val ',current.val)
+        //console.log('val ', val, 'current val ', current.val)
         if (val === current.val) {
-            return console.log(true)
+            return true;
         } else if (val < current.val) {
-            this.searchRecur(val, current.left)
+            return this.searchRecur(val, current.left)
         } else if (val > current.val) {
-            this.searchRecur(val, current.right)
-        }  
-        // else {
-        //     return false
-        // }
-        
+            return this.searchRecur(val, current.right)
+        }
+    }
+    searchIter(val, current = this.root) {
+        if (!current) return false;
+        while (current) {
+            //console.log('were in the loop')
+            if (val === current.val) {
+                return true;
+            } else if (val < current.val) {
+                current = current.left;
+            } else if (val > current.val) {
+                current = current.right;
+            }
+        }
+        //console.log('out of the loop')
+        return false;
     }
 }
 
