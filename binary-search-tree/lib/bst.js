@@ -34,22 +34,21 @@ class BST {
                 this.insert(val, current.right)
             }
         }
-
-        // while (current) {
-        //     if (val < current.val) {
-        //         if (!current.left) {
-        //             current.left = newNode;
-        //             return this;
-        //         }
-        //         // current =
-        //         else {
-        //             if(current.right )
-        //             current.left = new TreeNode(val)
-        //             current.left.val = val;
-        //         }
-        //     }
-        //     current = false
+    }
+    searchRecur(val, current = this.root) {
+        if (!current) return false
+        console.log('val ', val, 'current val ',current.val)
+        if (val === current.val) {
+            return console.log(true)
+        } else if (val < current.val) {
+            this.searchRecur(val, current.left)
+        } else if (val > current.val) {
+            this.searchRecur(val, current.right)
+        }  
+        // else {
+        //     return false
         // }
+        
     }
 }
 
